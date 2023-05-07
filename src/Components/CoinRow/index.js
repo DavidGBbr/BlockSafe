@@ -24,7 +24,7 @@ export const CoinRow = ({ coin }) => {
         <ModalInfo setModalActive={setModalActive} coinName={coinName} />
       </Modal>
       <C.TouchableOpacity onPress={() => getCoin(coin.id)}>
-        <C.Image source={{ uri: coin.image }} />
+        <C.Image source={{ uri: coin.image }} alt={coin.name} />
         <C.CoinInfo>
           <C.CoinName>{coin.name}</C.CoinName>
           <C.Price>
