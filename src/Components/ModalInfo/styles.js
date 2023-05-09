@@ -19,4 +19,11 @@ export const InfoCoin = styled.View`
   flex: 1;
   color: #fff;
   background: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+`;
+
+export const Paragraph = styled.Text`
+  color: #fff;
+  font-size: 21px;
+  line-height: 30px;
 `;
