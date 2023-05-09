@@ -2,7 +2,6 @@ import React from "react";
 import * as C from "./styles";
 import { TouchableOpacity, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { HistoryChart } from "../HistoryChart";
 import { useFetch } from "../../Hooks/useFetch";
 import { Loader } from "../../Utils/Loader";
 
@@ -53,7 +52,6 @@ export const ModalInfo = ({ setModalActive, coinName }) => {
               {response?.market_data?.price_change_percentage_24h?.toFixed(2)}%
             </C.Paragraph>
           </C.RowInfo>
-          {/* <HistoryChart /> */}
         </C.InfoCoin>
       )}
     </C.Container>
