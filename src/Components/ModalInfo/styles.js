@@ -22,8 +22,21 @@ export const InfoCoin = styled.View`
   padding: 20px;
 `;
 
+export const CoinName = styled.Text`
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffc52c;
+  margin-bottom: 20px;
+`;
+
+export const RowInfo = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const Paragraph = styled.Text`
   color: #fff;
-  font-size: 21px;
-  line-height: 30px;
+  font-size: 20px;
+  padding-bottom: 4px;
 `;

@@ -5,22 +5,20 @@ import { TableCoin } from "./src/Components/TableCoin";
 import * as C from "./styles";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useFetch } from "./src/Hooks/useFetch";
 
 export default function App() {
   const [data, setData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
 
-  const getData = async () => {
-    const response = await axios.get(
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=brl&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en"
-    );
-    setOriginalData(response.data);
-    setData(response.data);
-  };
+  const { response } = useFetch(
+    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=brl&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en"
+  );
 
   useEffect(() => {
-    getData();
-  }, []);
+    setOriginalData(response);
+    setData(response);
+  }, [response]);
 
   function setSearchCoin(t) {
     let arr = JSON.parse(JSON.stringify(originalData));
@@ -30,6 +28,24 @@ export default function App() {
       )
     );
   }
+
+  function getData() {
+    axios
+      .get(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=brl&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en"
+      )
+      .then((res) => {
+        setOriginalData(res.data);
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <C.SafeAreaView style={{ paddingTop: StatusBar.currentHeight }}>

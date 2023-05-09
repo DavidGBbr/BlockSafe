@@ -10,7 +10,6 @@ export const CoinRow = ({ coin }) => {
   const getCoin = async (id) => {
     setModalActive(true);
     setCoinName(id);
-    console.log(`Criptomoeda: ${id}`);
   };
 
   return (
