@@ -1,18 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { StatusBar } from "react-native";
+import { StatusBar, View } from "react-native";
 import { TableCoin } from "./src/Components/TableCoin";
 import * as C from "./styles";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useFetch } from "./src/Hooks/useFetch";
+import { Loader } from "./src/Utils/Loader";
 
 export default function App() {
   const [data, setData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
 
-  const { response } = useFetch(
-    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=brl&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en"
+  const { response, loading } = useFetch(
+    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=brl&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=7d"
   );
 
   useEffect(() => {
@@ -32,7 +33,7 @@ export default function App() {
   function getData() {
     axios
       .get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=brl&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en"
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=brl&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=7d"
       )
       .then((res) => {
         setOriginalData(res.data);
@@ -63,7 +64,20 @@ export default function App() {
           />
         </C.OrderButton>
       </C.SearchArea>
-      <TableCoin coins={data} />
+      {loading ? (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Loader />
+        </View>
+      ) : (
+        <TableCoin coins={data} />
+      )}
+
       <ExpoStatusBar style="light" />
     </C.SafeAreaView>
   );
