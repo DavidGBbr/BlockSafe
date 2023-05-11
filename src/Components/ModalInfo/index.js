@@ -37,7 +37,7 @@ export const ModalInfo = ({ setModalActive, data }) => {
             {data.price_change_percentage_24h.toFixed(2)}%
           </C.Paragraph>
         </C.RowInfo>
-        <CoinGraphic sparkline={data.sparkline_in_7d.price} />
+        <CoinGraphic data={data} sparkline={data.sparkline_in_7d.price} />
       </C.InfoCoin>
     </C.Container>
   );

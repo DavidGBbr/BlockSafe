@@ -4,12 +4,10 @@ import { Modal, View } from "react-native";
 import { ModalInfo } from "../ModalInfo";
 
 export const CoinRow = ({ coin }) => {
-  const [coinName, setCoinName] = useState();
   const [modalActive, setModalActive] = useState(false);
 
-  const getCoin = async (id) => {
+  const getCoin = async () => {
     setModalActive(true);
-    setCoinName(id);
   };
 
   return (
