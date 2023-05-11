@@ -72,9 +72,17 @@ export const CoinGraphic = ({ data, sparkline }) => {
 
   return (
     <C.Container>
-      <Text style={{ fontSize: 26, color: "#fff" }}>
-        Gráfico em USD {data.symbol}
-      </Text>
+      <C.UpperTitles>
+        <C.UpperLeftTitle>
+          <C.Image source={{ uri: data.image }} />
+          <C.Subtitle>
+            {data.name}({data.symbol.toUpperCase()})
+          </C.Subtitle>
+        </C.UpperLeftTitle>
+        <View>
+          <C.Subtitle>7d</C.Subtitle>
+        </View>
+      </C.UpperTitles>
 
       <View>
         <LineChart

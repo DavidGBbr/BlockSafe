@@ -18,15 +18,6 @@ export const ModalInfo = ({ setModalActive, data }) => {
       <C.InfoCoin>
         <C.CoinName>{data?.name}</C.CoinName>
         <C.RowInfo>
-          <C.Paragraph>Preço atual:</C.Paragraph>
-          <C.Paragraph style={{ color: "#8cc63f" }}>
-            {data.current_price.toLocaleString("pt-BR", {
-              style: "currency",
-              currency: "BRL",
-            })}
-          </C.Paragraph>
-        </C.RowInfo>
-        <C.RowInfo>
           <C.Paragraph>Variação percentual(24h):</C.Paragraph>
           <C.Paragraph
             style={{
@@ -35,6 +26,24 @@ export const ModalInfo = ({ setModalActive, data }) => {
             }}
           >
             {data.price_change_percentage_24h.toFixed(2)}%
+          </C.Paragraph>
+        </C.RowInfo>
+        <C.RowInfo>
+          <C.Paragraph>Alta Histórica:</C.Paragraph>
+          <C.Paragraph style={{ color: "#8cc63f" }}>
+            {data.ath.toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            })}
+          </C.Paragraph>
+        </C.RowInfo>
+        <C.RowInfo>
+          <C.Paragraph>Preço atual:</C.Paragraph>
+          <C.Paragraph style={{ color: "#8cc63f" }}>
+            {data.current_price.toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            })}
           </C.Paragraph>
         </C.RowInfo>
         <CoinGraphic data={data} sparkline={data.sparkline_in_7d.price} />
