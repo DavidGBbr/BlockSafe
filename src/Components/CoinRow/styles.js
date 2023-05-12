@@ -28,4 +28,5 @@ export const CoinName = styled.Text`
 
 export const Price = styled.Text`
   color: #8cc63f;
+  font-size: 18px;
 `;
